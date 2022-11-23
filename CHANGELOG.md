@@ -3,6 +3,35 @@
 
 -------------------------------------------------------------------------------------------------------------
 
+# 5.8.10 (2022-11-17)
+
+### 🐣新特性
+* 【http  】      HttpResponse增加getFileNameFromDisposition方法（pr#2676@Github）
+* 【core  】      FileUtil.copy，当来源为文件时，返回文件而非目录（issue#I5YCVL@Gitee）
+* 【db    】      DialectFactory增加identifyDriver重载（issue#I5YWI6@Gitee）
+* 【core  】      去除ClassloaderUtil的Cache（issue#I5YWI6@Gitee）
+* 【core  】      ClassScanner 增加忽略加载错误类的扫描方法（pr#855@Gitee）
+* 【core  】      DateUtil和LocalDateTimeUtil添加区间退化为点，点与区间，点与点之间关系判断。（pr#2725@Github）
+* 【http  】      UserAgentUtil增加对钉钉PC端的支持（issue#I60UOP@Gitee）
+* 【extra 】      兼容ZipArchiveInputStream多参数情况（issue#2736@Github）
+
+### 🐞Bug修复
+* 【db    】      修复分页时order by截断问题（issue#I5X6FM@Gitee）
+* 【core  】      修复Partition计算size除数为0报错问题（pr#2677@Github）
+* 【core  】      由于对于ASCII的编码解码有缺陷，且这种BCD实现并不规范，因此BCD标记为弃用（issue#I5XEC6@Gitee）
+* 【core  】      修复IoUtil.copyByNIO方法写出时没有flush的问题
+* 【core  】      修复TreeBuilder中使用HashMap导致默认乱序问题（issue#I5Z8C5@Gitee）
+* 【core  】      修复StrUtil.subWithLength负数问题（issue#I5YN49@Gitee）
+* 【core  】      修复DefaultTrustManager空指针问题（issue#2716@Github）
+* 【core  】      修复时间轮添加任务线程安全问题（pr#2712@Github）
+* 【core  】      修复 BeanUtil#copyProperties 源对象与目标对象都是 Map 时设置忽略属性无效问题（pr#2698@Github）
+* 【core  】      修复ChineseDate传入农历日期非闰月时获取公历错误问题（issue#I5YB1A@Gitee）
+* 【core  】      修复key为弱引用 value为强引用 会导致key无法被回收 弱引用失效问题（pr#2723@Github）
+* 【core  】      修复BeanUtil.copyProperties 包含EnumSet ，类型转换异常问题（pr#2684@Github）
+* 【extra 】      修复Ftp.uploadFileOrDirectory上传目录错误调用错误问题（issue#I5R2DE@Gitee）
+* 【extra 】      修复字节数组转float 返回类型却是double的bug（pr#867@Gitee）
+
+-------------------------------------------------------------------------------------------------------------
 # 5.8.9 (2022-10-22)
 
 ### 🐣新特性

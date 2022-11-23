@@ -22,14 +22,7 @@ import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -645,6 +638,33 @@ public class BeanUtilTest {
 
 		BeanUtil.copyProperties(station, station2);
 		Assert.assertEquals(new Long(123456L), station2.getId());
+	}
+
+	enum Version {
+		dev,
+		prod
+	}
+
+	@Data
+	public static class Vto {
+		EnumSet<Version> versions;
+	}
+
+
+	@Test
+	public void beanWithEnumSetTest() {
+		final Vto v1 = new Vto();
+		v1.setVersions(EnumSet.allOf(Version.class));
+		final Vto v2 = BeanUtil.copyProperties(v1, Vto.class);
+		Assert.assertNotNull(v2);
+		Assert.assertNotNull(v2.getVersions());
+	}
+
+	@Test
+	public void enumSetTest() {
+		final Collection<Version> objects = CollUtil.create(EnumSet.class, Version.class);
+		Assert.assertNotNull(objects);
+		Assert.assertTrue(EnumSet.class.isAssignableFrom(objects.getClass()));
 	}
 
 	static class Station extends Tree<Long> {}
